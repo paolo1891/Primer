@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class proyectile : MonoBehaviour {
     private float proyectileSpeed=20;
+    public GameObject ExplosionPreFab;
     
     private Transform myTransform;
 	// Use this for initialization
@@ -18,7 +19,7 @@ public class proyectile : MonoBehaviour {
         
         myTransform.Translate(Vector3.up * askToMove);
 
-        if (myTransform.position.x > 6.5f)
+        if (myTransform.position.x >10.5f)
         {
             Destroy(this.gameObject);
         }
@@ -31,8 +32,11 @@ public class proyectile : MonoBehaviour {
             //Destroy(otherObject.gameObject);
             //otherObject.transform.position = new Vector3(otherObject.transform.position.x,7.0f, otherObject.transform.position.z);
             Enemy enemy=(Enemy)otherObject.gameObject.GetComponent("Enemy");
+            //instanciar explosion
+            Instantiate(ExplosionPreFab, enemy.transform.position, enemy.transform.rotation);
             enemy.SetPositionAndSpeed();
             Destroy(gameObject);
+            //DestroyInm(ExplosionPreFab);
         }
     }
 }
