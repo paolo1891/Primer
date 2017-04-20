@@ -11,6 +11,7 @@ public class proyectile : MonoBehaviour {
 	void Start () {
         myTransform = transform;
         myTransform.Rotate(0, 0,-90);
+        
     }
 	
 	// Update is called once per frame
