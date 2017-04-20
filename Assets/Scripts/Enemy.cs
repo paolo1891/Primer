@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector3.left * toMove);
         
 
-        if (transform.position.x <= -5)
+        if (transform.position.x <= -20)
         {
             SetPositionAndSpeed();
         }
@@ -40,8 +40,8 @@ public class Enemy : MonoBehaviour
     public void SetPositionAndSpeed()
     {
         currentSpeed = Random.Range(minSpeed, maxSpeed);
-        x = 7.0f;
-        y = Random.Range(-1f, 1f);
+        x = 10.0f;
+        y = Random.Range(-4f, 5f);
         z = 0.0f;
         transform.position = new Vector3(x, y, z);
     }
