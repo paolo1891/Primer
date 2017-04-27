@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     #region Fields
     public float minSpeed;
     public float maxSpeed;
+    public GameObject ExplosionPreFab;
 
     public float currentSpeed;
     private float x, y, z;
@@ -45,5 +46,24 @@ public class Enemy : MonoBehaviour
         z = 0.0f;
         transform.position = new Vector3(x, y, z);
     }
+
+    void OnTriggerEnter(Collider otherObject)
+    {
+        Debug.Log("We hit! " + otherObject.name);
+        if (otherObject.tag == "Player")
+        {
+            //Destroy(otherObject.gameObject);
+            //otherObject.transform.position = new Vector3(otherObject.transform.position.x,7.0f, otherObject.transform.position.z);
+            Player player = (Player)otherObject.gameObject.GetComponent("Player");
+            //instanciar explosion
+            Instantiate(ExplosionPreFab, player.transform.position, player.transform.rotation);
+            //player.SetPositionAndSpeed();
+            Destroy(gameObject);
+            player.morir();
+            //DestroyInm(ExplosionPreFab);
+        }
+    }
+
+
     #endregion
 }

@@ -6,6 +6,8 @@ public class Player : MonoBehaviour {
 
     public float speedX = 0.1f;
     public float speedY = 0.1f;
+    public static int Score=0;
+    public static int Lives = 3;
     //public float playerSpeed;
     public GameObject ProjectilePreFab;
 
@@ -30,8 +32,7 @@ public class Player : MonoBehaviour {
         //}
         Movimiento();
         Disparar();
-
-       
+        
     }
 
     void Movimiento()
@@ -90,5 +91,21 @@ public class Player : MonoBehaviour {
             Debug.Log(position.x + "," + position.y + "," + position.z);
             Instantiate(ProjectilePreFab, position, Quaternion.identity);
         }
+    }
+
+    public void morir()
+    {
+        Destroy(this.gameObject);
+    }
+
+    void OnGUI()
+    {
+        buildGUI();
+    }
+    void buildGUI()
+    {
+        GUI.contentColor = Color.blue;
+        GUI.Label(new Rect(0, 0, 120, 240), "Score=" + Player.Score.ToString());
+        GUI.Label(new Rect(60, 0, 120, 240), "Lives=" + Player.Lives.ToString());
     }
 }
