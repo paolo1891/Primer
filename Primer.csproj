@@ -78,9 +78,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GuardiaPuerta.cs" />
-    <Compile Include="Assets\ProjectilGuardiaPuerta.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\GuardiaPuerta.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\proyectile.cs" />
   </ItemGroup>

@@ -7,14 +7,16 @@ public class proyectile : MonoBehaviour {
     public GameObject ExplosionPreFab;
     public string TargetTag;
     private Transform myTransform;
+
 	// Use this for initialization
 	void Start () {
+        //sds
         myTransform = transform;
-        myTransform.Rotate(0, 0,-90);        
+        myTransform.Rotate(0, 0,-90);    
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         float askToMove = proyectileSpeed * Time.deltaTime;
         
         myTransform.Translate(Vector3.up * askToMove);
@@ -27,7 +29,7 @@ public class proyectile : MonoBehaviour {
 
     void OnTriggerEnter(Collider otherObject)
     {
-        Debug.Log("We hit! " + otherObject.name);
+       // Debug.Log("We hit! " + otherObject.name);
         if (otherObject.tag == TargetTag) {
             if (TargetTag =="Player")
             {
