@@ -5,3 +5,6 @@ Mecanicas basicas de personajes
 - Avanzar de derecha a izquierda.
 - Disparar balitas.
 - Movimiento de enemigos.
+
+Importante:
+Cambiar el editor a modo texto: EDIT-PROJECT SETTINGS- EDITOR- Asset Serialization - Force text
