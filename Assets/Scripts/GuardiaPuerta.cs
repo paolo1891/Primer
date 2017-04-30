@@ -20,7 +20,7 @@ public class GuardiaPuerta : MonoBehaviour {
 
     void Disparo()
     {
-        // Permite cambiar la bala a nuvea direccion dependiendo del objeto vacio.    
+        // Permite cambiar la bala a una nueva direccion dependiendo del objeto vacio.    
         Instantiate(_BalaGuardiaPuerta, _spawn.position, _spawn.rotation);
     }
 
