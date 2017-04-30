@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    #region variables
     public float speedX = 0.1f;
     public float speedY = 0.1f;
-    public static int Score=0;
+    public GameObject Proyectil;
+    public Transform arma;
+
+    public static int Score = 0;
     public static int Lives = 3;
-    //public float playerSpeed;
-    public GameObject ProjectilePreFab;
+    #endregion
 
     // Use this for initialization
     void Start () {
@@ -18,30 +21,18 @@ public class Player : MonoBehaviour {
 
     // Update is called once per frame
     void Update()
-    {
-        //float askToMove = Input.GetAxis("Horizontal") * playerSpeed * Time.deltaTime;
-        //transform.Translate(Vector3.right * askToMove);
-        ////wrap
-        //if (transform.position.x <= -10.3f)
-        //{
-        //    transform.position = new Vector3(10.2f, transform.position.y, transform.position.z);
-        //}
-        //else if (transform.position.x >= 10.3f)
-        //{
-        //    transform.position = new Vector3(-10.2f, transform.position.y, transform.position.z);
-        //}
+    {       
         Movimiento();
-        Disparar();
-        
+        Disparar();        
     }
+
 
     void Movimiento()
     {
         float moveX = 0;
         float moveY = 0;
-
-        //movimiento WASD
-
+        
+        //Movimiento
         bool keyWPressed = Input.GetKey(KeyCode.W);
         if (keyWPressed)
         {
@@ -54,12 +45,6 @@ public class Player : MonoBehaviour {
             moveX = -speedX;
         }
 
-        bool keyDPressed = Input.GetKey(KeyCode.D);
-        if (keyDPressed)
-        {
-            moveX = speedX;
-        }
-
         bool keySPressed = Input.GetKey(KeyCode.S);
         if (keySPressed)
         {
@@ -67,9 +52,13 @@ public class Player : MonoBehaviour {
 
         }
 
+        bool keyDPressed = Input.GetKey(KeyCode.D);
+        if (keyDPressed)
+        {
+            moveX = speedX;
+        }
 
-
-        //al presionar E se duplicara la velocidad
+        //Correr
         bool keyLeftShiftPressed = Input.GetKey(KeyCode.LeftShift);
 
         if (keyLeftShiftPressed)
@@ -86,10 +75,9 @@ public class Player : MonoBehaviour {
     {
         if (Input.GetKeyDown("space"))
         {
-            //fire projectile
+            //Disparar proyectiles
             Vector3 position = new Vector3(transform.position.x, transform.position.y ,0);
-            Debug.Log(position.x + "," + position.y + "," + position.z);
-            Instantiate(ProjectilePreFab, position, Quaternion.identity);
+            Instantiate(Proyectil, position, Quaternion.identity);
         }
     }
 
@@ -98,10 +86,12 @@ public class Player : MonoBehaviour {
         Destroy(this.gameObject);
     }
 
+
     void OnGUI()
     {
         buildGUI();
     }
+
     void buildGUI()
     {
         GUI.contentColor = Color.blue;

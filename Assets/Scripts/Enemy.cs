@@ -8,13 +8,11 @@ public class Enemy : MonoBehaviour
     public float minSpeed;
     public float maxSpeed;
     public GameObject ExplosionPreFab;
-
     public float currentSpeed;
     private float x, y, z;
+    
     #endregion
-
-    #region Properties
-    #endregion
+    
 
     #region Functions
     // Use this for initialization
@@ -28,14 +26,10 @@ public class Enemy : MonoBehaviour
     {
         float toMove = currentSpeed * Time.deltaTime;
         transform.Translate(Vector3.left * toMove);
-        
-
         if (transform.position.x <= -20)
         {
             SetPositionAndSpeed();
         }
-
-
     }
 
     public void SetPositionAndSpeed()
@@ -49,21 +43,17 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter(Collider otherObject)
     {
-        Debug.Log("We hit! " + otherObject.name);
         if (otherObject.tag == "Player")
-        {
-            //Destroy(otherObject.gameObject);
-            //otherObject.transform.position = new Vector3(otherObject.transform.position.x,7.0f, otherObject.transform.position.z);
+        {   
+            //Instanciar al jugador, para sacar su funcion de morir para sacarlo de la memoria
             Player player = (Player)otherObject.gameObject.GetComponent("Player");
             //instanciar explosion
             Instantiate(ExplosionPreFab, player.transform.position, player.transform.rotation);
-            //player.SetPositionAndSpeed();
+            //Destruir objetos
             Destroy(gameObject);
-            player.morir();
-            //DestroyInm(ExplosionPreFab);
+            player.morir();            
         }
     }
-
-
+    
     #endregion
 }
